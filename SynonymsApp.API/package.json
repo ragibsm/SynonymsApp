@@ -1,0 +1,42 @@
+{
+  "name": "synonymsapp.api",
+  "version": "1.0.0",
+  "description": "Synonyms app api",
+  "main": "./src/api/server.ts",
+  "type": "module",
+  "scripts": {
+    "start": "tsx watch src/api/server.ts",
+    "build": "tsc",
+    "serve": "node dist/api/server.js",
+    "lint": "eslint ./src/**/*.ts",
+    "format": "eslint ./src/**/*.ts --fix",
+    "test": "glob -c \"c8 tsx --test --test-reporter spec \" \"./test/**/*.test.ts\""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.0",
+    "joi": "^17.13.3",
+    "proxy-addr": "^2.0.7",
+    "swagger-ui-express": "^5.0.1",
+    "winston": "^3.15.0"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.4",
+    "@types/sinon": "^17.0.3",
+    "@types/swagger-ui-express": "^4.1.6",
+    "@typescript-eslint/parser": "^8.8.0",
+    "body-parser": "^1.20.3",
+    "c8": "^10.1.2",
+    "cpy-cli": "^5.0.0",
+    "eslint": "^9.12.0",
+    "glob": "^11.0.0",
+    "sinon": "^19.0.2",
+    "tsc-hooks": "^1.1.2",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  }
+}

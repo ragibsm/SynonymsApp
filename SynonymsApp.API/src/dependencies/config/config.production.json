@@ -1,0 +1,7 @@
+{
+  "LogLevel": "info",
+  "Cors": {
+    "AllowedOrigins": ["http://localhost:3001"],
+    "Methods": ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"]
+  }
+}

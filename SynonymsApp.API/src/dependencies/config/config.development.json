@@ -1,0 +1,7 @@
+{
+  "LogLevel": "debug",
+  "Cors": {
+    "AllowedOrigins": ["*"],
+    "Methods": ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"]
+  }
+}

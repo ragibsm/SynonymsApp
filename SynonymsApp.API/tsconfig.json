@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "types": ["./types/environment.d.ts"],
+    "target": "es6",
+    "module": "NodeNext",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+  },
+  "hooks": [ "copy-files" ],
+  "include": [ "src/**/*.ts", "src/**/*.js", "src/**/*.json" ],
+  "exclude": ["node_modules"]
+}

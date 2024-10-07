@@ -1,0 +1,139 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Synonyms API",
+    "description": "This is a sample API that let's you to create synonyms for words and to retrieve them",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Synonyms",
+      "description": "Synonym APIs"
+    }
+  ],
+  "paths": {
+    "/v1/synonyms": {
+      "post": {
+        "tags": [
+          "Synonyms"
+        ],
+        "summary": "Add new word with synonyms",
+        "description": "Add new word with synonyms",
+        "operationId": "addSynonyms",
+        "requestBody": {
+          "description": "Add new word with synonyms",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SynonymRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful operation"
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    },
+    "/v1/synonyms/{word}": {
+      "get": {
+        "tags": [
+          "Synonyms"
+        ],
+        "summary": "Retireves direct and transitive synonyms for word",
+        "description": "Retireves direct and transitive synonyms for word",
+        "operationId": "getSynonyms",
+        "parameters": [{
+          "name": "word",
+          "in": "path",
+          "required": true,
+          "schema": {
+            "type": "string",
+            "example": "clean"
+          }
+        }, {
+          "name": "applyTransitiveRule",
+          "in": "query",
+          "required": false,
+          "schema": {
+            "type": "boolean"
+          }
+        }],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SynonymResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid input"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "SynonymRequest": {
+        "required": [
+          "word",
+          "synonyms"
+        ],
+        "type": "object",
+        "properties": {
+          "word": {
+            "type": "string",
+            "example": "clean"
+          },
+          "synonyms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "tidy"
+            }
+          }
+        }
+      },
+      "SynonymResponse": {
+        "type": "object",
+        "properties": {
+          "synonyms": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "tidy"
+            }
+          }
+        }
+      } 
+    },
+    "requestBodies": {
+      "SynonymRequest": {
+        "description": "Request to add word with synonyms",
+        "content": {
+          "application/json": {
+            "schema": {
+              "$ref": "#/components/schemas/SynonymRequest"
+            }
+          }
+        }
+      }
+    }
+  }
+}

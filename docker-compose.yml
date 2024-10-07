@@ -1,0 +1,21 @@
+services:
+  api:
+    container_name: synonyms.api
+    build: 
+      context: ./SynonymsApp.API
+      dockerfile: Dockerfile
+    ports:
+      - 3000:3000
+    environment:
+      NODE_ENV: production
+      LOG_LEVEL: debug
+
+  ui:
+    container_name: synonyms.ui
+    build: 
+      context: ./SynonymsApp.UI
+      dockerfile: Dockerfile
+    ports:
+      - 3001:3000
+    environment:
+      NODE_ENV: production
