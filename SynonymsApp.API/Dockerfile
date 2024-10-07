@@ -1,10 +1,10 @@
-FROM node:22
+FROM node:20-alpine
 
-WORKDIR /usr/src/app
+WORKDIR /app
 
 COPY . .
 
-RUN npm i
+RUN npm ci --include=dev
 
 RUN npm run build
 

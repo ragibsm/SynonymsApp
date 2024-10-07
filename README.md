@@ -21,7 +21,7 @@ from the root of the repository and you will have API running on port 3000 and U
 
 ### Running the app manually
 
-- Install [Node.js](https://nodejs.org/en/) version 22
+- Install [Node.js](https://nodejs.org/en/) version 20
 
 - Install dependencies in API and UI projects
 ``
