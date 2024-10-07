@@ -13,8 +13,6 @@ There are two ways the app can be started. Easier one by using Docker and more c
 
 ### Running the app with Docker
 
-If you have Docker compose installed than there is only one step required to start the app
-
 - Simply execute
 ``
 docker-compose up
