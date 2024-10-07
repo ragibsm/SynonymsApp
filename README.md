@@ -9,7 +9,7 @@ git clone git@github.com:ragibsm/SynonymsApp.git
 
 ## Running the app
 
-There are two ways the app can be started. Easier one by using Docker and more complicated one by running manually api and ui projects
+There are two ways the app can be started. Easier one by using Docker and more complicated one by running manually API and UI projects
 
 ### Running the app with Docker
 
