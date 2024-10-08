@@ -8,8 +8,8 @@ import './index.css'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ErrorBoundary } from 'react-error-boundary'
 import ErrorBoundaryFallback from './components/shared/ErrorBoundaryFallback.tsx'
-import Search from './components/pages/GetSynonymsPage.tsx';
-import CreateSynonyms from './components/pages/CreateSynonymsPage.tsx';
+import GetSynonymsPage from './components/pages/GetSynonymsPage.tsx';
+import CreateSynonymsPage from './components/pages/CreateSynonymsPage.tsx';
 import GlobalNotificationProvider from './components/shared/GlobalNotificationProvider.tsx';
 
 const queryClient = new QueryClient();
@@ -17,11 +17,11 @@ const queryClient = new QueryClient();
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Search />,
+    element: <GetSynonymsPage />,
   },
   {
     path: "/create",
-    element: <CreateSynonyms />,
+    element: <CreateSynonymsPage />,
   },
 ]);
 
