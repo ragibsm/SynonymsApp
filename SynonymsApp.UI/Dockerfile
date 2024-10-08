@@ -8,7 +8,7 @@ COPY . .
 
 RUN npm ci --include=dev
 
-RUN npm run build -- --mode production
+RUN npm run build -- --mode development
 
 EXPOSE 3000
 
