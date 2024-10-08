@@ -1,7 +1,7 @@
 {
   "LogLevel": "info",
   "Cors": {
-    "AllowedOrigins": ["http://localhost:3001"],
+    "AllowedOrigins": ["https://synonymsapp-ui.onrender.com"],
     "Methods": ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"]
   }
 }
