@@ -20,7 +20,7 @@ function GetSynonymsPage () {
       removeNotification();
       return getSynonyms(debouncedSynonymsQueryTerm, applyTransitiveRule, signal)
     },
-    enabled: !!debouncedSynonymsQueryTerm && /^[a-z0-9]+$/.test(debouncedSynonymsQueryTerm)
+    enabled: !!debouncedSynonymsQueryTerm && /^[a-z0-9]+$/i.test(debouncedSynonymsQueryTerm)
   });
 
   useEffect(() => {
@@ -47,7 +47,7 @@ function GetSynonymsPage () {
                   onChange={(e) => setSynonymsQueryTerm(e.target.value)}
                   className="w-full rounded border border-gray-300 bg-inherit p-3 shadow shadow-gray-100 mt-2 appearance-none outline-none text-neutral-800 invalid:[&:not(:placeholder-shown)]:border-red-500 peer placeholder:italic"
                   placeholder="e.g. clean"
-                  pattern="[a-z0-9]+"
+                  pattern="[a-zA-Z0-9]+"
                   required
                 />
                 <span className="mt-2 hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):invalid]:block">

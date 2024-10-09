@@ -11,20 +11,25 @@ class SynonymsService {
 
     this.logger.debug('Create new synonyms request', { request });
 
-    if (this.synonymsRepository.Exists(request.word)) {
+    const req = {
+      word: request.word.toLowerCase(),
+      synonyms: request.synonyms.map(s => s.toLowerCase())
+    };
+
+    if (this.synonymsRepository.Exists(req.word)) {
       this.logger.debug('Word already exists. Appending synonyms to the current entry..');
-      const currentSynonyms = this.synonymsRepository.GetAll(request.word);
-      this.synonymsRepository.Append(request.word, request.synonyms.filter(s => !currentSynonyms.includes(s)));
+      const currentSynonyms = this.synonymsRepository.GetAll(req.word);
+      this.synonymsRepository.Append(req.word, req.synonyms.filter(s => !currentSynonyms.includes(s)));
     } else {
       this.logger.debug('Word does not exist. Creating new entry..');
-      this.synonymsRepository.Create(request.word, request.synonyms);
+      this.synonymsRepository.Create(req.word, req.synonyms);
     }
 
-    request.synonyms.forEach(synonym => {
+    req.synonyms.forEach(synonym => {
       if (!this.synonymsRepository.Exists(synonym)) {
-        this.synonymsRepository.Create(synonym, [request.word]);
+        this.synonymsRepository.Create(synonym, [req.word]);
       } else {
-        this.synonymsRepository.Append(synonym, [request.word]);
+        this.synonymsRepository.Append(synonym, [req.word]);
       }
     });
     
@@ -35,12 +40,14 @@ class SynonymsService {
 
     this.logger.debug(applyTransitiveRule ? 'Transitive rule should be applied' : 'Only direct synonyms should be returned');
 
+    const queryWord = word.toLowerCase();
+
     if (!applyTransitiveRule) {
-      return this.synonymsRepository.GetAll(word);
+      return this.synonymsRepository.GetAll(queryWord);
     }
 
     const foundSynonyms = new Set<string>();
-    const wordsToQuery = [word];
+    const wordsToQuery = [queryWord];
     let currentWord: string | undefined;
 
     while(wordsToQuery.length > 0) {
